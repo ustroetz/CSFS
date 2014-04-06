@@ -1,0 +1,9 @@
+*.pyc
+venv/
+data/
+testdata/
+*.cache
+*.egg-info
+*.DS_store
+*.xml
+*.tif
