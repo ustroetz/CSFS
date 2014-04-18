@@ -21,14 +21,35 @@ var drawControl = new L.Control.Draw({
 	  rectangle:false,
 	  circle:false,
 	  marker: false,
-  	}
+	  polygon: {
+	  	shapeOptions: {
+                color: '#80c757'
+            }
+        }
+  	},
+  edit: {
+        featureGroup: drawnItems
+    }
 }).addTo(map);
 
 
 	
+map.on('draw:edited', function (e) {
+	drawnItems.eachLayer(function (layer){
+		getEstimate(layer);
+	});
+
+	if ($('#spatial_var tbody').children().length != 0 ){
+		$('#spatial_var').empty();
+		$("#calculate").css("display", "block");
+		$("#recalculate").css("display", "none");
+
+	};
+});
 
 map.on('draw:drawstart', function (e){
 	$("#infoStart").remove();
+	$("#estimated_cost").empty();
 	drawnItems.eachLayer(function (layer){
 		map.removeLayer(layer)
 	});
@@ -41,11 +62,16 @@ map.on('draw:drawstart', function (e){
 	};
 	});
 
-var getEstimate = function (e) {
-	var geojson = e.layer.toGeoJSON();
+map.on('draw:created', function (e) {
+	getEstimate(e.layer)
+});
+
+
+var getEstimate = function (layer) {
+	var geojson = layer.toGeoJSON();
     var wkt = Terraformer.WKT.convert(geojson.geometry);
 	
-	drawnItems.addLayer(e.layer);
+	drawnItems.addLayer(layer);
 	document.getElementById('estimated_cost').innerHTML = 'No Data';
 
       $(function() {
@@ -65,17 +91,10 @@ var getEstimate = function (e) {
  };
 
 
-map.on('draw:created', function (e) {
-	getEstimate(e)
-});
-
-
-
 
 function calculate(){
 
-		  // Get Input Variables
-		  
+		  // Get Input Variables		  
 		  var TPA = document.getElementById('TPA').value;
 		  if(! TPA){
 		    TPA = 300
