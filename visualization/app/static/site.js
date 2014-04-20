@@ -1,13 +1,23 @@
-var map = L.map('map').setView([40.545, -105.965], 14);
+var map = L.map('map').setView([40.683242,-105.930176], 10);
 
 baseLayers = {
-  "Satellite" : L.mapbox.tileLayer('tmcw.map-j5fsp01s'),
-  "Terrain" :  L.mapbox.tileLayer('tmcw.map-7s15q36b').addTo(map),
+  "Terrain" :  L.mapbox.tileLayer('tmcw.map-7s15q36b'),
+  "Satellite" : L.mapbox.tileLayer('tmcw.map-j5fsp01s').addTo(map)
 };
 
 overlays = {
   'Cost Surface': L.mapbox.tileLayer('ustroetz.t').addTo(map),
 };
+
+// CSF boundary
+L.geoJson(csf,{
+    style: {
+    "color": "white",
+    "fillColor": "transparent",
+    "weight": 5,
+    "opacity": 1
+}
+}).addTo(map);
 
 // Add a layer control element to the map
 layerControl = L.control.layers(baseLayers, overlays, {position: 'topleft'});
