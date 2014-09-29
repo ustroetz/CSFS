@@ -70,6 +70,9 @@ map.on('draw:edited', function(e) {
 });
 
 map.on('draw:drawstart', function(e) {
+    map.removeLayer(terrainTileLayer);
+    satelliteTileLayer.addTo(map);
+
     // after stand drawing started: remove info start box, empty cost estimate, remove previous stand layers, remove detailed caluclation
 
     $("#infoSign").remove();
