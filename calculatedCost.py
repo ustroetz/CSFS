@@ -14,7 +14,7 @@ def cost_func(stand_wkt, TPA, VPA, SkidDist, Slope):
     source.ImportFromEPSG(4326)
 
     target = osr.SpatialReference()
-    target.ImportFromEPSG(  )
+    target.ImportFromEPSG(26913)
 
     transform = osr.CoordinateTransformation(source, target)
 
