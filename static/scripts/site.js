@@ -10,8 +10,8 @@ var csf = L.geoJson(csf, {
 });
 var satelliteTileLayer = L.tileLayer('https://{s}.tiles.mapbox.com/v3/tmcw.map-j5fsp01s/{z}/{x}/{y}.png');
 var terrainTileLayer = L.tileLayer('https://{s}.tiles.mapbox.com/v3/tmcw.map-7s15q36b/{z}/{x}/{y}.png');
-var costSurfaceTileLayer = L.tileLayer('https://{s}.tiles.mapbox.com/v3/csfsfc.t/{z}/{x}/{y}.png', {
-    opacity: 0.5
+var costSurfaceTileLayer = L.tileLayer('https://{s}.tiles.mapbox.com/v3/csfsfc.h/{z}/{x}/{y}.png', {
+    opacity: 0.9
     });
 
 baseLayers = {
@@ -37,7 +37,7 @@ var drawControl = new L.Control.Draw({
         marker: false,
         polygon: {
             shapeOptions: {
-                color: '#80c757'
+                color: '#ffffff'
             }
         }
     },
@@ -48,6 +48,7 @@ var drawControl = new L.Control.Draw({
 
 
 terrainTileLayer.addTo(map);
+costSurfaceTileLayer.addTo(map);
 csf.addTo(map);
 layerControl.addTo(map);
 drawControl.addTo(map);
