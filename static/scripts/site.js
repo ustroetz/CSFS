@@ -11,7 +11,7 @@ var csf = L.geoJson(csf, {
 var satelliteTileLayer = L.tileLayer('https://{s}.tiles.mapbox.com/v3/tmcw.map-j5fsp01s/{z}/{x}/{y}.png');
 var terrainTileLayer = L.tileLayer('https://{s}.tiles.mapbox.com/v3/tmcw.map-7s15q36b/{z}/{x}/{y}.png');
 var costSurfaceTileLayer = L.tileLayer('https://{s}.tiles.mapbox.com/v3/csfsfc.h/{z}/{x}/{y}.png', {
-    opacity: 0.9
+    opacity: 0.5
     });
 
 baseLayers = {
