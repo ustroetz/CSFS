@@ -11,6 +11,7 @@ python __init__.py
 
 ###Access app
 ```
+runs on Digital Ocean
 ssh root@188.226.219.169
 /var/www/FlaskApp/FlaskApp
 ```
