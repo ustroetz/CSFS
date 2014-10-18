@@ -1,5 +1,5 @@
 // Create map elements
-var map = L.map('map').setView([40.545, -105.965], 14);
+var map = L.map('map').setView([40.54, -105.95], 13);
 
 var csf = L.geoJson(csf, {
     style: {
@@ -55,7 +55,7 @@ drawControl.addTo(map);
 drawnItems.addTo(map)
 
 
-// Create event listener	
+// Create event listener
 map.on('draw:edited', function(e) {
     // after stand is edited: recalcualte estimate, remove detailed calculation
 
@@ -128,7 +128,7 @@ var getEstimate = function(layer) {
 
 var calculate = function() {
 
-    // Get Input Variables		  
+    // Get Input Variables
     var TPA = document.getElementById('TPA').value;
     if (!TPA) {
         TPA = 300
